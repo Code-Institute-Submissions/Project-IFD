@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">-->
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.css" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    
+    <title>WoT Statistics</title>
+</head>
+
+<body>
+
+<section>
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="box-wrapper search-block">
+                    <h1 class="section-heading center-position">World of Tanks Player Statistics</h1>
+                    <form class="form-inline center-position" onsubmit="getPlayerInfo();return false">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputNickname">Nickname</label>
+                            <input type="text" class="form-control" id="uname" placeholder="e.g. Loef78">
+                            <button id="Submit-btn" type="submit" class="btn btn-primary mb-2">Get Statistics</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2" id="Comments">
+                <div class="box-wrapper overview">
+                    <h2>This site is best presented on desktop systems!</h2>
+                    <p>The main focus for this site is to have interactive possibilities with Graphs and Data Tables.
+                    These functionalities work best on Desktop systems and have some scaling issues for smaller screen devices.
+                    My focus is therefor the larger screens, and if succesful, later versions will address the smaller screen devices.</p>
+                    <p><mark>IF YOU USE THIS SITE ON A MOBILE DEVICE, PUT IT IN LANDSCAPE</p></mark>
+                    <h3>Comment from the Developer</h3>
+                    <p>This site makes use of the official <a href="https://developers.wargaming.net/" target="blank">World of Tanks API.</a> 
+                    You can search by player name and can use various filter options to see that players statistics per Tier, nation and Tank Type.
+                    Statistics are as accurate as WoT API is up-to-date and is only useable for the EU server at the moment!</p>
+                    <h3>News</h3>
+                    <p>15/10/2018: The current version of this site is still a Beta Version. The goal is to provide the next features in the upcoming months.
+                    Mastery Badges per Tier, Vehicle specific Stats, <a href="http://wiki.wnefficiency.net/pages/WN8" target="blank">WN8.</a></p>
+                    <h3>How to Use this site</h3>
+                    <p>This site differs from the existing sites because it has some interactive charts which can be used to show statistics based on a subset of data.
+                    For example you can select 1 or more Levels, Nation or tank types and see your stats only for those tanks. In order to do so you can use the "Select" boxes or click on the specific
+                    bar or pie-piece in the charts. All data (table and charts) are automatically adjusted! 
+                    The reason why i am offering this functionality is because people can excel on lower levels and suck on the higher levels while the overall statistics don't show.</p>
+                </div>
+            </div>
+        </div>
+</section> 
+<section id="stats-section" class="hidden">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="box-wrapper">
+                <div class="clearfix stat-display">
+                    <h3>Generic Account stats</h3>
+                    <h4 id="NickName" class="left"></h4>
+                    <h4 id="Global_Rating" class="left"></h4>
+                    <h4 id="Last_Battle" class="left"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-sm-offset-2">
+            <div class="box-wrapper">
+                <div class="title">
+                    <h4 id="Tier_selector2">Average winrate per Level&#09;</h4>
+                </div>
+                <div class="clearfix">
+                    <div id="bar-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-4">
+            <div class="box-wrapper">
+                <div class="title">
+                    <h4 id="Nation_selector"> Battles per Nation&#09;</h4>
+                </div>
+                <div class="clearfix">
+                    <div id="Nation-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-sm-offset-2">
+            <div class="box-wrapper">
+                <div class="title">
+                    <h4 id="Type_selector">Battles per Type&#09;</h4>
+                </div>
+                <div class="clearfix">
+                    <div id="Type-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-4 ">
+            <div class="box-wrapper">
+                <div class="title">
+                    <h4 id="Tier_selector">Battles per Level&#09;</h4>
+                </div>
+                <div class="clearfix">
+                    <div id="Tier-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="box-wrapper">
+                <div class="title">
+                    <h4>Battles</h4>
+                </div>
+                <div class="clearfix">
+                    <table class='table table-hover' id='Table'>
+                        <thead>
+                            <tr class='header'>
+                                <!--<th class="hidden">ID</th>-->
+                                <th>Name</th>
+                                <th>Nation</th>
+                                <th>Type</th>
+                                <th>Level</th>
+                                <th>Wins</th>
+                                <th>Battles</th>
+                                <th>Mark</th>
+                                <th>Winrate</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+<div id="trunkArray" class="hidden"></div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+
+</body>
+
+</html>
