@@ -11,10 +11,10 @@ h3 {
 }
 
 a{
-    color: #006400;
+    color: blue;
 }
 body {
-    background-image: url("/assets/images/wot.jpg");
+    background-image: url("/assets/images/wot3.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -36,7 +36,7 @@ body {
 }
 
 .overview, .search-block{
-    color: #006400;
+    color: black;
     border: 1px solid #006400;
     border-radius: 4px;
     padding: 10px 25px;
