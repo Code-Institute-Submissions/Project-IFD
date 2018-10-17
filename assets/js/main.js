@@ -59,7 +59,7 @@ function getPlayerInfo() {
     
     //first type is always nickname
     var type = "nickname"
-    var arg = document.getElementById("uname").value;
+    var arg = document.getElementById("inputNickname").value;
     //var type = "search=" + document.getElementById("uname").value;
     var Accountid = "" ;
     // get the account_id from the player that is filled in the input field//
