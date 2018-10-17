@@ -204,7 +204,6 @@ function CombineArray(TankArray, myTankArray) {
                     "Nation":Nation,
                     "Type":Type,
                     "Level": Level,
-                    // "Tank_Id":TankID,
                     "Wins": Wins,
                     "Battles": Battles,
                     "Mark": MoM,
@@ -229,7 +228,6 @@ function makeGraphs(error, transactionsData) {
     console.log(transactionsData)
     
     transactionsData.forEach(function(d){
-        // d.Amount = parseInt(d.Amount);
         d.Winrate = parseInt(d.Winrate);
         d.Wins = parseInt(d.Wins);
         d.Battles = parseInt(d.Battles);
@@ -312,9 +310,6 @@ function MakePieChartNation(ndx){
     var total_battles = name_dim.group().reduceSum(dc.pluck('Battles'));
     
     dc.pieChart('#Nation-chart')
-        // .width($('#Nation-chart').innerWidth())
-        // .height($('#Nation-chart').innerHeight())
-        
         .height(300)
         .width(380)
         .radius(90)
@@ -362,7 +357,6 @@ var dim = ndx.dimension(dc.pluck('Level'));
         .group(group)
         .valueAccessor(function (p) {
             return p.value.average.toFixed(4);
-            // return p.value.average
         })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
@@ -384,7 +378,6 @@ function MakeDataTable(ndx){
       .group(function(d) {return ' '})
       .size(205)             // number of rows to return
       .columns([
-    //   function(d) { return d.Mouse;},
       function(d) { return d.Name;},
       function(d) { return d.Nation;},
       function(d) { return d.Type;},
