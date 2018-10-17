@@ -31,7 +31,7 @@
                     <form class="form-inline center-position" onsubmit="getPlayerInfo();return false">
                         <div class="form-group mx-sm-3 mb-2">
                             <label for="inputNickname">Nickname</label>
-                            <input type="text" class="form-control" id="uname" placeholder="e.g. Loef78">
+                            <input type="text" class="form-control" id="inputNickname" placeholder="e.g. Loef78">
                             <button id="Submit-btn" type="submit" class="btn btn-primary mb-2">Get Statistics</button>
                         </div>
                     </form>
@@ -45,7 +45,7 @@
                     <p>The main focus for this site is to have interactive possibilities with Graphs and Data Tables.
                     These functionalities work best on Desktop systems and have some scaling issues for smaller screen devices.
                     My focus is therefor the larger screens, and if succesful, later versions will address the smaller screen devices.</p>
-                    <p><mark>IF YOU USE THIS SITE ON A MOBILE DEVICE, PUT IT IN LANDSCAPE</p></mark>
+                    <p ><mark class="highlight">IF YOU USE THIS SITE ON A MOBILE DEVICE, PUT IT IN LANDSCAPE</mark></p>
                     <h3>Comment from the Developer</h3>
                     <p>This site makes use of the official <a href="https://developers.wargaming.net/" target="blank">World of Tanks API.</a> 
                     You can search by player name and can use various filter options to see that players statistics per Tier, nation and Tank Type.
@@ -71,6 +71,7 @@
                     <h4 id="NickName" class="left"></h4>
                     <h4 id="Global_Rating" class="left"></h4>
                     <h4 id="Last_Battle" class="left"></h4>
+                    <h4><a class="btn btn-primary" role="button" href="javascript:dc.filterAll(); dc.renderAll();">Reset All Filters</a></h4>
                 </div>
             </div>
         </div>
@@ -124,9 +125,9 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <div class="box-wrapper">
-                <div class="title">
-                    <h4>Battles</h4>
-                </div>
+                <!--<div class="title">-->
+                    <!--<h4>Battles</h4>-->
+                <!--</div>-->
                 <div class="clearfix">
                     <table class='table table-hover' id='Table'>
                         <thead>

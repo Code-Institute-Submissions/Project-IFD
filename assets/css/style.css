@@ -19,6 +19,17 @@ body {
     background-attachment: fixed;
 }
 
+.header{
+    background-color: #006400;
+    color: white;
+}
+
+.highlight{
+    background-color: yellow;
+    font-style: italic;
+    font-weight: bold;
+}
+
 .row{
     margin: 0px;
 }
@@ -52,8 +63,8 @@ body {
 .stat-display{
     text-align: center;
     color: #000000;
-    margin-top:10px;
-    margin-bottom: 10px;
+    /*margin-top:10px;*/
+    /*margin-bottom: 10px;*/
     padding: 10px;
 }
 

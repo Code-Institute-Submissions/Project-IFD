@@ -43,7 +43,7 @@ This site uses **DC Graphs** for the dimensional charts
 For showing and hiding sections, button interactions, **JQuery** is used
 For structuring data **Javascript** is used
 
-The site can be viewed [HERE](<insert guithub pages>)
+The site can be viewed [HERE](https://martinloef.github.io/Project-IFD/)
 
 ## Features
  
