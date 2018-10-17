@@ -14,7 +14,7 @@ a{
     color: blue;
 }
 body {
-    background-image: url("../assets/images/wot3.jpg");
+    background-image: url("./assets/images/wot3.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
