@@ -9,7 +9,9 @@ This is a website for players of the World of Tanks Game which want to see stati
 2.  Winrate statistics based on the level of their tank (1 to 10)
 3.  Winrate statistics based on the type of tank (Medium, Heavy, Light, Tank Destroyer, SPG(artillery))
 4.  Winrate statistics based on the nation their tanks belong to
-5.  Main feature are the interactive Graphs that allow you to make selections which are directly applied to the DataTable and other charts
+5.  Calculation of the WN8 score overall
+6.  Calculation of the WN8 score per selection 
+7.  Main feature are the interactive Graphs that allow you to make selections which are directly applied to the DataTable and other charts
 
  
 ### What does it do?
@@ -17,6 +19,7 @@ This is a website for players of the World of Tanks Game which want to see stati
 This site makes use of the official worls of tanks API (https://developers.wargaming.net/reference/all/wot/account/list/?application_id=5d6d1657c5bc736658f1e6aa3dcb5f6e&r_realm=eu)
 Based on the nickname statistics are requested from the API.
 Main goal is to give players extra performance information about which level, tank type and nation (with what do they excel, or where they should improve...)
+Within the World of Tanks community the WN8 score is accepted and used to measure your skills. (http://wiki.wnefficiency.net/pages/WN8)
 
 Main focus are to have a excellent view on Desktop sized screens, bacause scaling of graphs and DataTables are not wel represented on small portrait devices.
 
