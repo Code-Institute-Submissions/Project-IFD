@@ -58,7 +58,7 @@ The site can be viewed [HERE](https://martinloef.github.io/Project-IFD/)
 ### Features Left to Implement
 - I'm planning to make this a real website that should compete with existing websites. In order to achive that, i should build in battle performance rating.
 - In order to achive that, i have to calculate the WN8 score (http://wiki.wnefficiency.net/pages/WN8), use the foundations JSON File (http://www.wnefficiency.net/wnexpected/)
-- Extend my API call with battle performance statistics per tank
+- Extend my API call with battle performance statistics per tank (done in feb 2019)
 
 ## Tech Used
 
@@ -77,6 +77,8 @@ The site can be viewed [HERE](https://martinloef.github.io/Project-IFD/)
 ## Testing
 - All code used on the site has been tested to ensure everything is working as expected
 - Used not existing NickNames in order to give an Alert and stops showing empty Graphs
+- Tested with existing and non existing player names
+- WN8 score compared with other statistic sites (because the expected tank values are adjusted on a weekly base they can differ when json file isnt updated regularly)
 - Site viewed and tested in the following browsers:
   - Google Chrome
   - Opera
